@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>Cours</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="{% static 'vendor/animate.css/animate.min.css'%}" rel="stylesheet">
+        <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+        <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+        <link href="{% static 'vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+        <link href="{% static 'vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+        <link href="{% static 'vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        <link href="{% static 'css/my_css_style.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        {% include "INCLUSIONS/nav" %}
+        <main> <br><br>
+            <div class="container">
+                <div class="row centrer_texte">
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <a class="image_cours" href="{% url 'cours_maths' %}">
+                            <img style="width: 75%;height: 80%;" src="{% static 'images/ingegneurie/math1.jpg' %}" alt="MATHS">
+                        </a><br><span class="monter_texte">MATHEMATIQUES</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <a class="image_cours" href="{% url 'cours_phy' %}">
+                            <img style="width: 75%;height: 80%;" src="{% static 'images/ingegneurie/physic2.jpg' %}" alt="PHYSIC">
+                        </a><br><span class="monter_texte">PHYSIQUES</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <a class="image_cours" href="{% url 'cours_ch' %}">
+                            <img style="width: 75%;height: 80%;" src="{% static 'images/ingegneurie/chimie1.jpg' %}" alt="CHIMIE">
+                        </a><br><span class="monter_texte">CHIMIE</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <a class="image_cours" href="{% url 'cours_info' %}">
+                            <img style="width: 75%;height: 80%;" src="{% static 'images/ingegneurie/info1.jpg' %}" alt="INFO">
+                        </a><br><span class="monter_texte">INFORMATIQUE</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <a class="image_cours" href="{% url 'cours_mec' %}">
+                            <img style="width: 75%;height: 80%;" src="{% static 'images/ingegneurie/physic1.jpg' %}" alt="MECA">
+                        </a><br><span class="monter_texte">MECANIQUE</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <a class="image_cours" href="{% url 'cours_bio' %}">
+                            <img style="width: 75%;height: 80%;" src="{% static 'images/Bio-Geo/bio2.jpg' %}" alt="BIOLOGY">
+                        </a><br><span class="monter_texte">BIOLOGIE</span>
+                    </div>
+                </div>
+            </div>
+            {% include 'INCLUSIONS/nous_contacter' %}
+        </main>
+        {% include "INCLUSIONS/footer" %}
+        <!-- MDB -->
+        <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+        <!-- Custom scripts -->
+        <script lang="javascript">
+            
+        </script>
+    </body>
+</html>

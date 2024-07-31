@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>Voir-Correction</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="{% static 'vendor/animate.css/animate.min.css'%}" rel="stylesheet">
+        <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+        <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+        <link href="{% static 'vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+        <link href="{% static 'vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+        <link href="{% static 'vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        <link href="{% static 'css/my_css_style.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        {% include "INCLUSIONS/nav" %}
+        <main class="main_voir"> <br><br>
+            <iframe src="" width="90%" height="600px" id="vue_corrige" style="margin: 5%;"></iframe><br><br>
+            <a href="" id="vue_sujet">Consulter le sujet ?</a><br>
+            <a href="" id="achat_corrige">Acheter le corrigé ?</a>
+            {% include 'INCLUSIONS/nous_contacter' %}
+        </main>
+        {% include "INCLUSIONS/footer" %}
+        <!-- MDB -->
+        <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+        <!-- Custom scripts -->
+        <script lang="javascript">
+
+            var acheter_correction=document.getElementById("achat_corrige");
+            var voir_sujet=document.getElementById("vue_sujet");
+            var actualiser_corrige=document.getElementById("vue_corrige");
+
+            var recuper_cr_e=localStorage.getItem("nom_cr");
+            var recuper_e_e=localStorage.getItem("nom_ep"); 
+            var recuper_m_e=localStorage.getItem("nom_m");  
+            var recuper_btn_push=localStorage.getItem("click_on_btn");
+            
+            if (recuper_cr_e=="iut_dla" || recuper_e_e=="iut_dla"){//Relatif aux corrections concernant l'IUT de Douala
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/maths/cr-maths_iut-dla_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i);break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/cr-phy_iut-dla_niv1-' %}"+i+".pdf"; var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/info/cr-info_iut-dla_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/cr-cg_iut-dla_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/maths/cr-maths_iut-dla_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i);break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/cr-phy_iut-dla_niv3-' %}"+i+".pdf"; var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/info/cr-info_iut-dla_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/cr-cg_iut-dla_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="iut_bdj" || recuper_e_e=="iut_bdj"){//Relatif aux corrections concernant l'IUT de Bandjoun
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/maths/cr-maths_iut-bdj_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/cr-phy_iut-bdj_niv1-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}   
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/info/cr-info_iut-bdj_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/cr-cg_iut-bdj_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/maths/cr-maths_iut-bdj_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/cr-phy_iut-bdj_niv3-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}   
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/info/cr-info_iut-bdj_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/cr-cg_iut-bdj_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="iut_ngd" || recuper_e_e=="iut_ngd"){//Relatif aux corrections concernant l'IUT de Ngaoundere
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/maths/cr-maths_iut-ng_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/cr-phy_iut-ng_niv1-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/info/cr-info_iut-ng_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/cr-cg_iut-ng_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/maths/cr-maths_iut-ng_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/cr-phy_iut-ng_niv3-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/info/cr-info_iut-ng_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/cr-cg_iut-ng_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="ensp_dla" || recuper_e_e=="ensp_dla"){//Relatif aux corrections concernant l'ENSP de Douala
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/maths/cr-maths_ensp-dla_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/cr-phy_ensp-dla_niv1-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/info/cr-info_ensp-dla_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/cr-cg_ensp-dla_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/maths/cr-maths_ensp-dla_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/cr-phy_ensp-dla_niv3-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/info/cr-info_ensp-dla_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/cr-cg_ensp-dla_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="ensp_yde" || recuper_e_e=="ensp_yde"){//Relatif aux corrections concernant l'ENSP de Yaounde
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/maths/cr-maths_ensp-yde_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/cr-phy_ensp-yde_niv1-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/info/cr-info_ensp-yde_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/cr-cg_ensp-yde_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/maths/cr-maths_ensp-yde_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/cr-phy_ensp-yde_niv3-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/info/cr-info_ensp-yde_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/cr-cg_ensp-yde_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="ensp_mra" || recuper_e_e=="ensp_mra"){//Relatif aux corrections concernant l'ENSP de Maroua
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/maths/cr-maths_ensp-mra_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/cr-phy_ensp-mra_niv1-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/info/cr-info_ensp-mra_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/cr-cg_ensp-mra_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/maths/cr-maths_ensp-mra_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/cr-phy_ensp-mra_niv3-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/info/cr-info_ensp-mra_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/cr-cg_ensp-mra_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="fmsb_ds" || recuper_e_e=="fmsb_ds"){//Relatif aux corrections concernant la FMSB de Dschang
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-pc "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/phy-ch/cr-phy-ch_fmsb-ds_niv1-' %}"+i+".pdf"; var for_cp=localStorage.setItem("nom_m","ep-pc "+i);break;}
+                        if (recuper_m_e=="cr-bl "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/biologie/cr-bio_fmsb-ds_niv1-' %}"+i+".pdf"; var for_bl=localStorage.setItem("nom_m","ep-bl "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/cr-cg_fmsb-ds_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-pc "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/phy-ch/cr-phy-ch_fmsb-ds_niv3-' %}"+i+".pdf"; var for_cp=localStorage.setItem("nom_m","ep-pc "+i);break;}
+                        if (recuper_m_e=="cr-bl "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/biologie/cr-bio_fmsb-ds_niv3-' %}"+i+".pdf"; var for_bl=localStorage.setItem("nom_m","ep-bl "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/cr-cg_fmsb-ds_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="fmsb_gr" || recuper_e_e=="fmsb_gr"){//Relatif aux corrections concernant la FMSB de Garoua
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-pc "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/phy-ch/cr-phy-ch_fmsb-gr_niv1-' %}"+i+".pdf";var for_pc=localStorage.setItem("nom_m","ep-pc "+i);break;}
+                        if (recuper_m_e=="cr-bl "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/biologie/cr-bio_fmsb-gr_niv1-' %}"+i+".pdf"; var for_bl=localStorage.setItem("nom_m","ep-bl "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/cr-cg_fmsb-gr_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-pc "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/phy-ch/cr-phy-ch_fmsb-gr_niv3-' %}"+i+".pdf";var for_pc=localStorage.setItem("nom_m","ep-pc "+i);break;}
+                        if (recuper_m_e=="cr-bl "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/biologie/cr-bio_fmsb-gr_niv3-' %}"+i+".pdf"; var for_bl=localStorage.setItem("nom_m","ep-bl "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/cr-cg_fmsb-gr_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="ens_bta" || recuper_e_e=="ens_bta"){//Relatif aux corrections concernant l'ENS de Bertoua
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/maths/cr-maths_ens-bta_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/cr-phy_ens-bta_niv1-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/info/cr-info_ens-bta_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-c "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/chimie/cr-chimie_ens-bta_niv1-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","ep-c "+i);break;}
+                        if (recuper_m_e=="cr-svt "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/svt/cr-svt_ens-bta_niv1-' %}"+i+".pdf"; var for_svt=localStorage.setItem("nom_m","ep-svt "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/cr-cg_ens-bta_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/maths/cr-maths_ens-bta_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/cr-phy_ens-bta_niv3-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/info/cr-info_ens-bta_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-c "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/chimie/cr-chimie_ens-bta_niv3-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","ep-c "+i);break;}
+                        if (recuper_m_e=="cr-svt "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/svt/cr-svt_ens-bta_niv3-' %}"+i+".pdf"; var for_svt=localStorage.setItem("nom_m","ep-svt "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/cr-cg_ens-bta_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="ens_mra" || recuper_e_e=="ens_mra"){//Relatif aux corrections concernant l'ENS de Maroua
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/maths/cr-maths_ens-mra_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/cr-phy_ens-mra_niv1-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/info/cr-info_ens-mra_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-c "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/chimie/cr-chimie_ens-mra_niv1-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","ep-c "+i);break;}
+                        if (recuper_m_e=="cr-svt "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/svt/cr-svt_ens-mra_niv1-' %}"+i+".pdf"; var for_svt=localStorage.setItem("nom_m","ep-svt "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/cr-cg_ens-mra_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/maths/cr-maths_ens-mra_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/cr-phy_ens-mra_niv3-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/info/cr-info_ens-mra_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-c "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/chimie/cr-chimie_ens-mra_niv3-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","ep-c "+i);break;}
+                        if (recuper_m_e=="cr-svt "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/svt/cr-svt_ens-mra_niv3-' %}"+i+".pdf"; var for_svt=localStorage.setItem("nom_m","ep-svt "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/cr-cg_ens-mra_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="ens_yde" || recuper_e_e=="ens_yde"){//Relatif aux corrections concernant l'ENS de Yaounde
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/maths/cr-maths_ens-yde_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/cr-phy_ens-yde_niv1-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/info/cr-info_ens-yde_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-c "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/chimie/cr-chimie_ens-yde_niv1-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","ep-c "+i);break;}
+                        if (recuper_m_e=="cr-svt "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/svt/cr-svt_ens-yde_niv1-' %}"+i+".pdf"; var for_svt=localStorage.setItem("nom_m","ep-svt "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/cr-cg_ens-yde_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/maths/cr-maths_ens-yde_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/cr-phy_ens-yde_niv3-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/info/cr-info_ens-yde_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-c "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/chimie/cr-chimie_ens-yde_niv3-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","ep-c "+i);break;}
+                        if (recuper_m_e=="cr-svt "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/svt/cr-svt_ens-yde_niv3-' %}"+i+".pdf"; var for_svt=localStorage.setItem("nom_m","ep-svt "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/cr-cg_ens-yde_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="enset_dla" || recuper_e_e=="enset_dla"){//Relatif aux corrections concernant l'ENSET de Douala
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/maths/cr-maths_enset-dla_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/cr-phy_enset-dla_niv1-' %}"+i+".pdf"; var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/info/cr-info_enset-dla_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-c "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/chimie/cr-chimie_enset-dla_niv1-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","ep-c "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/cr-cg_enset-dla_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/maths/cr-maths_enset-dla_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/cr-phy_enset-dla_niv3-' %}"+i+".pdf"; var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/info/cr-info_enset-dla_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-c "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/chimie/cr-chimie_enset-dla_niv3-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","ep-c "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/cr-cg_enset-dla_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="enset_ebl" || recuper_e_e=="enset_ebl"){//Relatif aux corrections concernant l'ENSET d'Ebolowa
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/maths/cr-maths_enset-eb_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/cr-phy_enset-eb_niv1-' %}"+i+".pdf"; var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/info/cr-info_enset-eb_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-c "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/chimie/cr-chimie_enset-eb_niv1-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","ep-c "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/cr-cg_enset-eb_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/maths/cr-maths_enset-eb_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-p "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/cr-phy_enset-eb_niv3-' %}"+i+".pdf"; var for_p=localStorage.setItem("nom_m","ep-p "+i);break;}
+                        if (recuper_m_e=="cr-if "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/info/cr-info_enset-eb_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","ep-if "+i);break;}
+                        if (recuper_m_e=="cr-c "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/chimie/cr-chimie_enset-eb_niv3-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","ep-c "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/cr-cg_enset-eb_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+                
+            }
+            else if (recuper_cr_e=="fasa_ds" || recuper_e_e=="fasa_ds"){//Relatif aux corrections concernant la FASA de Dschang
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/maths/cr-maths_fasa-ds_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-pc "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/phy-ch/cr-phy-ch_fasa-ds_niv1-' %}"+i+".pdf"; var for_pc=localStorage.setItem("nom_m","ep-pc "+i);break;}
+                        if (recuper_m_e=="cr-bl "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/biologie/cr-bio_fasa-ds_niv1-' %}"+i+".pdf"; var for_bl=localStorage.setItem("nom_m","ep-bl "+i);break;}
+                        if (recuper_m_e=="cr-gl "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/geologie/cr-geo_fasa-ds_niv1-' %}"+i+".pdf"; var for_gl=localStorage.setItem("nom_m","ep-gl "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/cr-cg_fasa-ds_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+                if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="cr-m "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/maths/cr-maths_fasa-ds_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","ep-m "+i); break;}
+                        if (recuper_m_e=="cr-pc "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/phy-ch/cr-phy-ch_fasa-ds_niv3-' %}"+i+".pdf"; var for_pc=localStorage.setItem("nom_m","ep-pc "+i);break;}
+                        if (recuper_m_e=="cr-bl "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/biologie/cr-bio_fasa-ds_niv3-' %}"+i+".pdf"; var for_bl=localStorage.setItem("nom_m","ep-bl "+i);break;}
+                        if (recuper_m_e=="cr-gl "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/geologie/cr-geo_fasa-ds_niv3-' %}"+i+".pdf"; var for_gl=localStorage.setItem("nom_m","ep-gl "+i);break;}
+                        if (recuper_m_e=="cr-cg "+i){actualiser_corrige.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/cr-cg_fasa-ds_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","ep-cg "+i);break;}
+                    }
+                }
+            }
+            voir_sujet.href="{% url 'voir_ep' %}";
+            
+
+        </script>
+    </body>
+
+</html>

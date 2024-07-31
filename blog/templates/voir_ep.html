@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>Voir-Epreuve</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="{% static 'vendor/animate.css/animate.min.css'%}" rel="stylesheet">
+        <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+        <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+        <link href="{% static 'vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+        <link href="{% static 'vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+        <link href="{% static 'vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        <link href="{% static 'css/my_css_style.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        {% include "INCLUSIONS/nav" %}
+        <main class="main_voir"> <br><br>
+            <iframe src="" width="90%" height="600px" id="vue_epreuve" style="margin: 5%;"></iframe><br><br>
+            <a href="" id="vue_cours">Consulter le cours ?</a><br>
+            <a href="" id="vue_correction">Consulter le corrigé ?</a><br>
+            <a href="" id="achat_sujet">Acheter le sujet ?</a>
+            {% include 'INCLUSIONS/nous_contacter' %}
+        </main>
+        {% include "INCLUSIONS/footer" %}
+        <!-- MDB -->
+        <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+        <!-- Custom scripts -->
+        <script lang="javascript">
+            
+            var parent_main=document.getElementsByClassName("main_voir");
+
+            var voir_corrige=document.getElementById("vue_correction");
+            var actualiser_epreuve=document.getElementById("vue_epreuve");
+            var voir_cours=document.getElementById("vue_cours");
+            var acheter_sujet=document.getElementById("achat_sujet");
+
+            var recuper_e_e=localStorage.getItem("nom_ep");  
+            var recuper_cr_e=localStorage.getItem("nom_cr"); 
+            var recuper_m_e=localStorage.getItem("nom_m");  
+            var recuper_btn_push=localStorage.getItem("click_on_btn"); 
+            
+            if (recuper_cr_e=="iut_dla" || recuper_e_e=="iut_dla"){//Relatif aux epreuves concernant l'IUT de Douala
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/maths/ep-maths_iut-dla_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/ep-phy_iut-dla_niv1-' %}"+i+".pdf"; var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/info/ep-info_iut-dla_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/ep-cg_iut-dla_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    };
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/maths/ep-maths_iut-dla_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/ep-phy_iut-dla_niv3-' %}"+i+".pdf"; var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/info/ep-info_iut-dla_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/ep-cg_iut-dla_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    };
+                }
+            }
+            else if (recuper_cr_e=="iut_bdj" || recuper_e_e=="iut_bdj"){//Relatif aux epreuves concernant l'IUT de Bandjoun
+                if (recuper_btn_push=="btn1"){    
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/maths/ep-maths_iut-bdj_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/ep-phy_iut-bdj_niv1-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}   
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/info/ep-info_iut-bdj_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/ep-cg_iut-bdj_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){    
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/maths/ep-maths_iut-bdj_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/ep-phy_iut-bdj_niv3-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}   
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/info/ep-info_iut-bdj_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/ep-cg_iut-bdj_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="iut_ngd" || recuper_e_e=="iut_ngd"){//Relatif aux epreuves concernant l'IUT de Ngaoundere
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/maths/ep-maths_iut-ng_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/ep-phy_iut-ng_niv1-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/info/ep-info_iut-ng_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/ep-cg_iut-ng_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/maths/ep-maths_iut-ng_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/ep-phy_iut-ng_niv3-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/info/ep-info_iut-ng_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/ep-cg_iut-ng_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="ensp_dla" || recuper_e_e=="ensp_dla"){//Relatif aux epreuves concernant l'ENSP de Douala
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/maths/ep-maths_ensp-dla_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/ep-phy_ensp-dla_niv1-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/info/ep-info_ensp-dla_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/ep-cg_ensp-dla_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/maths/ep-maths_ensp-dla_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/ep-phy_ensp-dla_niv3-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/info/ep-info_ensp-dla_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/ep-cg_ensp-dla_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="ensp_yde" || recuper_e_e=="ensp_yde"){//Relatif aux epreuves concernant l'ENSP de Yaounde
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/maths/ep-maths_ensp-yde_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/ep-phy_ensp-yde_niv1-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/info/ep-info_ensp-yde_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/ep-cg_ensp-yde_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/maths/ep-maths_ensp-yde_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/ep-phy_ensp-yde_niv3-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/info/ep-info_ensp-yde_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/ep-cg_ensp-yde_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="ensp_mra" || recuper_e_e=="ensp_mra"){//Relatif aux epreuves concernant l'ENSP de Maroua
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/maths/ep-maths_ensp-mra_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/ep-phy_ensp-mra_niv1-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/info/ep-info_ensp-mra_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/ep-cg_ensp-mra_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/maths/ep-maths_ensp-mra_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/ep-phy_ensp-mra_niv3-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/info/ep-info_ensp-mra_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/ep-cg_ensp-mra_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="fmsb_ds" || recuper_e_e=="fmsb_ds"){//Relatif aux epreuves concernant la FMSB de Dschang
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-pc "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/phy-ch/ep-phy-ch_fmsb-ds_niv1-' %}"+i+".pdf"; var for_cp=localStorage.setItem("nom_m","cr-pc "+i);voir_cours.href="{% url 'cours' %}";break;}
+                        if (recuper_m_e=="ep-bl "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/biologie/ep-bio_fmsb-ds_niv1-' %}"+i+".pdf"; var for_bl=localStorage.setItem("nom_m","cr-bl "+i);voir_cours.href="{% url 'cours_bio' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/ep-cg_fmsb-ds_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-pc "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/phy-ch/ep-phy-ch_fmsb-ds_niv3-' %}"+i+".pdf"; var for_cp=localStorage.setItem("nom_m","cr-pc "+i);voir_cours.href="{% url 'cours' %}";break;}
+                        if (recuper_m_e=="ep-bl "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/biologie/ep-bio_fmsb-ds_niv3-' %}"+i+".pdf"; var for_bl=localStorage.setItem("nom_m","cr-bl "+i);voir_cours.href="{% url 'cours_bio' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/ep-cg_fmsb-ds_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="fmsb_gr" || recuper_e_e=="fmsb_gr"){//Relatif aux epreuves concernant la FMSB de Garoua
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-pc "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/phy-ch/ep-phy-ch_fmsb-gr_niv1-' %}"+i+".pdf";var for_pc=localStorage.setItem("nom_m","cr-pc "+i);voir_cours.href="{% url 'cours' %}";break;}
+                        if (recuper_m_e=="ep-bl "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/biologie/ep-bio_fmsb-gr_niv1-' %}"+i+".pdf"; var for_bl=localStorage.setItem("nom_m","cr-bl "+i);voir_cours.href="{% url 'cours_bio' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/ep-cg_fmsb-gr_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-pc "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/phy-ch/ep-phy-ch_fmsb-gr_niv3-' %}"+i+".pdf";var for_pc=localStorage.setItem("nom_m","cr-pc "+i);voir_cours.href="{% url 'cours' %}";break;}
+                        if (recuper_m_e=="ep-bl "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/biologie/ep-bio_fmsb-gr_niv3-' %}"+i+".pdf"; var for_bl=localStorage.setItem("nom_m","cr-bl "+i);voir_cours.href="{% url 'cours_bio' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/ep-cg_fmsb-gr_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="ens_bta" || recuper_e_e=="ens_bta"){//Relatif aux epreuves concernant l'ENS de Bertoua
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/maths/ep-maths_ens-bta_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/ep-phy_ens-bta_niv1-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/info/ep-info_ens-bta_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-c "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/chimie/ep-chimie_ens-bta_niv1-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","cr-c "+i);voir_cours.href="{% url 'cours_ch' %}";break;}
+                        if (recuper_m_e=="ep-svt "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/svt/ep-svt_ens-bta_niv1-' %}"+i+".pdf"; var for_svt=localStorage.setItem("nom_m","cr-svt "+i);voir_cours.href="{% url 'cours_bio' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/ep-cg_ens-bta_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/maths/ep-maths_ens-bta_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/ep-phy_ens-bta_niv3-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/info/ep-info_ens-bta_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-c "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/chimie/ep-chimie_ens-bta_niv3-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","cr-c "+i);voir_cours.href="{% url 'cours_ch' %}";break;}
+                        if (recuper_m_e=="ep-svt "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/svt/ep-svt_ens-bta_niv3-' %}"+i+".pdf"; var for_svt=localStorage.setItem("nom_m","cr-svt "+i);voir_cours.href="{% url 'cours_bio' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/ep-cg_ens-bta_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="ens_mra" || recuper_e_e=="ens_mra"){//Relatif aux epreuves concernant l'ENS de Maroua
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/maths/ep-maths_ens-mra_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i); voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/ep-phy_ens-mra_niv1-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/info/ep-info_ens-mra_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-c "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/chimie/ep-chimie_ens-mra_niv1-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","cr-c "+i);voir_cours.href="{% url 'cours_ch' %}";break;}
+                        if (recuper_m_e=="ep-svt "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/svt/ep-svt_ens-mra_niv1-' %}"+i+".pdf"; var for_svt=localStorage.setItem("nom_m","cr-svt "+i);voir_cours.href="{% url 'cours_bio' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/ep-cg_ens-mra_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/maths/ep-maths_ens-mra_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i); voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/ep-phy_ens-mra_niv3-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/info/ep-info_ens-mra_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-c "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/chimie/ep-chimie_ens-mra_niv3-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","cr-c "+i);voir_cours.href="{% url 'cours_ch' %}";break;}
+                        if (recuper_m_e=="ep-svt "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/svt/ep-svt_ens-mra_niv3-' %}"+i+".pdf"; var for_svt=localStorage.setItem("nom_m","cr-svt "+i);voir_cours.href="{% url 'cours_bio' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/ep-cg_ens-mra_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="ens_yde" || recuper_e_e=="ens_yde"){//Relatif aux epreuves concernant l'ENS de Yaounde
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/maths/ep-maths_ens-yde_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/ep-phy_ens-yde_niv1-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/info/ep-info_ens-yde_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-c "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/chimie/ep-chimie_ens-yde_niv1-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","cr-c "+i);voir_cours.href="{% url 'cours_ch' %}";break;}
+                        if (recuper_m_e=="ep-svt "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/svt/ep-svt_ens-yde_niv1-' %}"+i+".pdf"; var for_svt=localStorage.setItem("nom_m","cr-svt "+i);voir_cours.href="{% url 'cours_bio' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/ep-cg_ens-yde_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/maths/ep-maths_ens-yde_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/ep-phy_ens-yde_niv3-' %}"+i+".pdf";var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/info/ep-info_ens-yde_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-c "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/chimie/ep-chimie_ens-yde_niv3-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","cr-c "+i);voir_cours.href="{% url 'cours_ch' %}";break;}
+                        if (recuper_m_e=="ep-svt "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/svt/ep-svt_ens-yde_niv3-' %}"+i+".pdf"; var for_svt=localStorage.setItem("nom_m","cr-svt "+i);voir_cours.href="{% url 'cours_bio' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/ep-cg_ens-yde_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="enset_dla" || recuper_e_e=="enset_dla"){//Relatif aux epreuves concernant l'ENSET de Douala
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/maths/ep-maths_enset-dla_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/ep-phy_enset-dla_niv1-' %}"+i+".pdf"; var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/info/ep-info_enset-dla_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-c "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/chimie/ep-chimie_enset-dla_niv1-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","cr-c "+i);voir_cours.href="{% url 'cours_ch' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/ep-cg_enset-dla_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/maths/ep-maths_enset-dla_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/ep-phy_enset-dla_niv3-' %}"+i+".pdf"; var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/info/ep-info_enset-dla_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-c "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/chimie/ep-chimie_enset-dla_niv3-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","cr-c "+i);voir_cours.href="{% url 'cours_ch' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/ep-cg_enset-dla_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="enset_ebl" || recuper_e_e=="enset_ebl"){//Relatif aux epreuves concernant l'ENSET d'Ebolowa
+            if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/maths/ep-maths_enset-eb_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/physiques/ep-phy_enset-eb_niv1-' %}"+i+".pdf"; var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/info/ep-info_enset-eb_niv1-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-c "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/chimie/ep-chimie_enset-eb_niv1-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","cr-c "+i);voir_cours.href="{% url 'cours_ch' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/ep-cg_enset-eb_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/maths/ep-maths_enset-eb_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-p "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/physiques/ep-phy_enset-eb_niv3-' %}"+i+".pdf"; var for_p=localStorage.setItem("nom_m","cr-p "+i);voir_cours.href="{% url 'cours_phy' %}";break;}
+                        if (recuper_m_e=="ep-if "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/info/ep-info_enset-eb_niv3-' %}"+i+".pdf"; var for_if=localStorage.setItem("nom_m","cr-if "+i);voir_cours.href="{% url 'cours_info' %}";break;}
+                        if (recuper_m_e=="ep-c "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/chimie/ep-chimie_enset-eb_niv3-' %}"+i+".pdf"; var for_c=localStorage.setItem("nom_m","cr-c "+i);voir_cours.href="{% url 'cours_ch' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/ep-cg_enset-eb_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+            }
+            else if (recuper_cr_e=="fasa_ds" || recuper_e_e=="fasa_ds"){//Relatif aux epreuves concernant la FASA de Dschang
+                if (recuper_btn_push=="btn1"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/maths/ep-maths_fasa-ds_niv1-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-pc "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/phy-ch/ep-phy-ch_fasa-ds_niv1-' %}"+i+".pdf"; var for_pc=localStorage.setItem("nom_m","cr-pc "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-bl "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/biologie/ep-bio_fasa-ds_niv1-' %}"+i+".pdf"; var for_bl=localStorage.setItem("nom_m","cr-bl "+i);voir_cours.href="{% url 'cours_bio' %}";break;}
+                        if (recuper_m_e=="ep-gl "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/geologie/ep-geo_fasa-ds_niv1-' %}"+i+".pdf"; var for_gl=localStorage.setItem("nom_m","cr-gl "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau1/cult_gen/ep-cg_fasa-ds_niv1-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+                else if (recuper_btn_push=="btn3"){
+                    for(let i=2000;i<2025;i++){
+                        if (recuper_m_e=="ep-m "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/maths/ep-maths_fasa-ds_niv3-' %}"+i+".pdf";var for_m=localStorage.setItem("nom_m","cr-m "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-pc "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/phy-ch/ep-phy-ch_fasa-ds_niv3-' %}"+i+".pdf"; var for_pc=localStorage.setItem("nom_m","cr-pc "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-bl "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/biologie/ep-bio_fasa-ds_niv3-' %}"+i+".pdf"; var for_bl=localStorage.setItem("nom_m","cr-bl "+i);voir_cours.href="{% url 'cours_bio' %}";break;}
+                        if (recuper_m_e=="ep-gl "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/geologie/ep-geo_fasa-ds_niv3-' %}"+i+".pdf"; var for_gl=localStorage.setItem("nom_m","cr-gl "+i);voir_cours.href="{% url 'cours_maths' %}";break;}
+                        if (recuper_m_e=="ep-cg "+i){actualiser_epreuve.src="{% static 'Docs_Ep-Cr/Niveau3/cult_gen/ep-cg_fasa-ds_niv3-' %}"+i+".pdf"; var for_cg=localStorage.setItem("nom_m","cr-cg "+i);voir_cours.href="{% url 'cours' %}";break;}
+                    }
+                }
+            }
+            voir_corrige.href="{% url 'voir_cr' %}";
+
+            /*localStorage.removeItem("nom_ep");  
+            localStorage.removeItem("nom_cr"); 
+            localStorage.removeItem("nom_m");  
+            localStorage.removeItem("click_on_btn");*/
+
+        </script>
+    </body>
+
+</html>
